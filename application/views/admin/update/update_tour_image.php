@@ -1,0 +1,155 @@
+<div class="page-wrapper">
+<div id="main-wrapper">
+
+<!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="<?= base_url('AdminHome/index'); ?>" class="link">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="<?= base_url('AdminHome/tour_master'); ?>" class="link">Tour Master</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Update Page</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <h4 class="page-title">Update Page</h4>
+                    </div>
+                </div>
+            </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+     <!-- Update Start         -->
+     <!-- ============================================================== -->
+     <!-- ============================================================== -->
+
+    <div class="container-fluid mt-5">
+        <!-- .row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body ">
+                        <h4 class="card-title">Tour Details Update Form</h4>
+                        <h5 class="card-subtitle"> Upload all type of images </h5>
+                        <form class="form" method="POST" action="<?= base_url('AdminHome/update_tour_image') ?>" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<?= $data->image_id; ?>">
+                            <input type="hidden" name="image_path" value="<?= $data->image_path; ?>">     
+                            <div class="form-group mt-5 row">
+                                <label for="example-text-input" class="ml-2 col-form-label text-dark">Destination Name :</label><br><br>
+                                <input class="form-control border-secondary" type="text" name="tour_name" value="<?= $data->tour_name; ?>" id="example-text-input" placeholder="Enter Member Name">
+                                <br>
+                                <br>
+                                <label class="ml-2 col-form-label text-dark">Destination Long Description :</label>
+                                <textarea class="form-control border-secondary" rows="5" name="description" ><?= $data->description; ?></textarea>
+                                <br><br>
+                                <label class="ml-2 col-form-label text-dark">Destination Short Description :</label>
+                                <textarea class="form-control border-secondary" rows="3" name="short_description" ><?= $data->short_description; ?></textarea>
+                                <br><br>
+                                <label for="example-text-input" class="ml-2 col-form-label text-dark">Destination Price :</label><br><br>
+                                <input class="form-control border-secondary" type="text" name="price" value="<?= $data->price; ?>" id="example-text-input" placeholder="Enter Member Name">
+                                <br><br>
+                                <label class="ml-2 col-form-label text-dark">Upload image file</label>
+                                <input type="file" name="image_path" class="form-control border-secondary"><br><br><br>
+                                <img src="<?= base_url($data->image_path); ?>" style="height: 300px; width:300px;" alt="">
+                            </div>
+                            <button onclick="history.back()" type="button" class="btn btn-danger" data-dismiss="modal">Go Back</button>
+                            <button type="submit" class="btn btn-success ml-2">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Update Modal Start -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- <?php  
+            echo "<pre>";
+            print_r ($data);
+            echo "</pre>";
+             ?> -->
+    <div class="container-fluid mt-5" >            
+        <div class="row">
+            <div class="col-sm-12 mb-5">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Upload Details Of Tour Master
+                </button>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" >
+                    <div class="modal-content" style="border-radius:20px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                        <form  method="post" action="<?= base_url('AdminHome/update_tour_image'); ?>" enctype="multipart/form-data">
+                            <div class="modal-header">                   
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Upload Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body " >
+                                <div class="form-group mt-3 row">
+                                    <label for="example-text-input" class="ml-4 text-dark">Destination Name : </label>
+                                    <div class="col-12">
+                                        <input class="form-control border-secondary" type="text" name="tour_name" value="" placeholder="Enter Destination Name" id="example-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2 row">
+                                    <label for="example-text-input" class="ml-4 text-dark">Destination Long Description : </label>
+                                    <div class="col-12">
+                                        <!-- <input class="form-control" type="text" value="" placeholder="Enter Category" id="example-text-input"> -->
+                                        <textarea class="form-control border-secondary"  type="text" rows="3" name="description" placeholder="Enter Long Description"></textarea> 
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2 row">
+                                    <label for="example-text-input" class="ml-4 text-dark">Destination Short Description : </label>
+                                    <div class="col-12">
+                                        <!-- <input class="form-control" type="text" value="" placeholder="Enter Category" id="example-text-input"> -->
+                                        <textarea class="form-control border-secondary"  type="text" rows="3" name="short_description" placeholder="Enter Short Description"></textarea> 
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2 row">
+                                    <label for="example-text-input" class="ml-4 text-dark">Destination Price : </label>
+                                    <div class="col-12">
+                                        <input class="form-control border-secondary" type="number" value="" name="price" placeholder="Enter Destination Price" id="example-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2 mb-2 row">
+                                    <label for="example-text-input" class="ml-4 text-dark">Destination Image : </label>
+                                    <div class="col-12">
+                                        <input class="form-control text-dark border-secondary" type="file" name="image_path" value=""  id="example-text-input">
+                                    </div>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Upload</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>            
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Update Modal End -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- upload end -->
